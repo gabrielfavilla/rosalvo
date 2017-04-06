@@ -1,6 +1,7 @@
 @import 'mixins';
 @import 'fonts';
 @import 'colors';
+@import 'elements';
 @import 'header';
 @import 'footer';
 
@@ -10,11 +11,16 @@ img{
 
 body{
   background-color: $silver-chalice;
+
+  &.overflowHidden{
+    overflow: hidden;
+  }
 }
 
 html, body {
   height: 100%;
   margin: 0; padding: 0;  /* to avoid scrollbars */
+  font-family: $titillium;
 }
 
 .PageWrapper {
@@ -27,13 +33,8 @@ html, body {
 }
 
 .PageContent{
+  margin-top: 80px;
 	flex: 1;
-}
-
-body{
-  &.overflowHidden{
-    overflow: hidden;
-  }
 }
 
 .Banner{
@@ -43,14 +44,15 @@ body{
   background-size: cover;
   height: 540px;
   position: relative;
-  padding-top: 100px;
+  -margin-top: 100px;
   text-align: center;
 
   @include MQ(M){
-    height: 960px;
+    height: 550px;
+    
   }
 
-  &-content{
+  &__content{
     @include center(x);
     bottom: 10%;
     max-width: 970px;
@@ -60,25 +62,51 @@ body{
     @include MQ(S){
       bottom: 130px;
     }
+
+    @include MQ(M){
+      @include transform(none);
+      bottom: 80px;
+      left: 90px;
+    }
   }
 
   h1{
     color: white;
+    font-family: $code;
     font-size: 24px;
     font-weight: 500;
-    line-height: 1.2;
-    letter-spacing: -0.2px;
-    margin: 0 auto;
     font-weight: bold;
+    letter-spacing: 0.9px;
+    line-height: 1.2;
+    margin: 0 auto;
+    padding-left: 20px;
     max-width: 85%;
+    position: relative;
+
+    &::before{
+      background-color: $fuel-yellow;
+      content: "";
+      display: inline-block;
+      height: 95%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 5px;
+    }
 
     @include MQ(S){
-      font-size: 42px;
+      font-size: 28px;
+      text-align: left;
     }
 
     @include MQ(M){
-      font-size: 60px;
-      max-width: 100%;
+      font-size: 34px;
+      max-width: 70%;
+      margin: 0;
+    }
+
+    span{
+      color: $fuel-yellow;
     }
   }
 
@@ -94,5 +122,622 @@ body{
     @include MQ(M){
       margin-top: 120px;
     }
+  }
+}
+
+
+.Busca{
+  background-color: $tuatara;
+  padding: 25px 0;
+  text-align: center;
+
+  @include MQ(S){
+    padding: 45px 0;
+  }
+
+  p{
+    color: $silver;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.4;
+    text-align: center;
+    text-transform: uppercase;
+
+    @include MQ(M){
+      text-align: left;
+    }
+  }
+
+  .Form__control--search{
+    float: none;
+    margin: 10px 0;
+  }
+
+  @include MQ(M){
+    .Form,
+    p{
+      display: inline-block;
+      vertical-align: middle;
+      width: inherit;
+    }
+
+    .Form__control--search{
+      margin-left: 30px;
+      width: 300px;
+    }
+  }
+}
+
+
+
+// GRID
+
+.Grid{
+  @include clearfix;
+
+  &__item{
+    background-position: left 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-bottom: 1px solid $fuel-yellow;
+    float: left;
+    height: 320px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+
+    &::after{
+      @include transition(all .3s ease);
+
+      background: rgba($tuatara, .58);
+      content: "";
+      display: block;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+    &:hover{
+      &::after{
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .Grid__title{
+        @include transform(translateY(-40px));
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .Grid__buttons{
+        @include transform(translateY(0));
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    &--xs{
+      @extend .Grid__item;
+
+      display: none;
+
+      @include MQ(M){
+        display: inline-block;
+      }
+    }
+
+    @include MQ(S){
+      width: 50%;
+    }
+
+    @include MQ(M){
+      width: 25%;
+    }
+  }
+
+  &__title{
+    @include transition(all .3s ease);
+
+    bottom: 15px;
+    color: white;
+    font-family: $titillium;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    line-height: 1.4;
+    margin: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    z-index: 1;
+
+    small{
+      display: block;
+      font-size: 10px;
+      font-weight: normal;
+    }
+
+    @include MQ(M){
+      font-size: 16px;
+
+      small{
+        font-size: 12px;
+      }
+    }
+  }
+
+  &__buttons{
+    @include transform(translateY(50px));
+    @include transition(all .4s ease);
+
+    background: rgba($tuatara, .67);
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    padding: 15px 10px;
+    position: absolute;
+    text-align: center;
+    visibility: hidden;
+    width: 100%;
+    z-index: 1;
+
+    @include MQ(M){
+      padding: 20px 5px;
+    }
+
+    > a {
+      color: white;
+      display: inline-block;
+      float: left;
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      line-height: 1;
+      position: relative;
+      text-decoration: none;
+      width: 50%;
+
+      &:last-child{
+        &::before{
+          background-color: #7d7d7b;
+          content: "";
+          display: inline-block;
+          height: 100%;
+          left: -5px;
+          position: absolute;
+          width: 2px;
+        }
+      }
+
+      @include MQ(M){
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+
+// Ver
+
+.Ver{
+  background-color: $tuatara;
+  border-bottom: 1px solid $fuel-yellow;
+  padding: 25px 0;
+
+  .u-button{
+    margin: 0 auto;
+  }
+
+  @include MQ(M){
+    padding: 45px 0;    
+  }
+}
+
+
+.Info{
+  @include clearfix;
+
+  &__left{
+    display: none;
+
+    @include MQ(M){
+      background-size: cover;
+      background: url(../img/contato.jpg) no-repeat center top;
+    }
+  }
+
+  &__right{
+    background: url(../img/couro.jpg) no-repeat 0 0;
+    background-size: cover;
+  }
+
+  &__left,
+  &__right{
+    @include MQ(M){
+      display: inline-block;
+      float: left;
+      height: 640px;
+      width: 50%;
+    }
+  }
+}
+
+.Contato{
+  padding: 30px 0;
+
+  @include MQ(M){
+    padding: 80px 12%;
+  }
+
+  h5,
+  p{
+    text-align: right;
+    line-height: 1.4;
+    letter-spacing: 1px;
+  }
+
+  h5{
+    color: $silver;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 0;
+    text-transform: uppercase;
+  }
+
+  p{
+    font-size: 14px;
+    color: $silver;
+  }
+
+  .Form{
+    margin-top: 45px;
+  }
+
+}
+
+.Map{
+  @include clearfix;
+
+  border-bottom: 1px solid $fuel-yellow;
+
+  &__left{
+    background: url(../img/couro.jpg) no-repeat 0 0;
+    background-size: cover;
+  }
+
+  &__right{
+    height: 400px;
+  }
+
+  &__left,
+  &__right{
+
+    @include MQ(M){
+      display: inline-block;
+      float: left;
+      height: 640px;
+      width: 50%;
+    }
+  }
+}
+
+.Dados{
+  padding: 60px 15px;
+
+  @include MQ(M){
+    padding: 80px 12%;
+  }
+
+  ul{
+    color: $mercury;
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 1.8px;
+    line-height: 1.4;
+    list-style: none;
+    margin-left: 0;
+    margin-top: 0;
+    padding: 0;
+
+    @include MQ(M){
+      font-size: 16px;
+    }
+  }
+
+  &__logo{
+    margin-bottom: 50px;
+  }
+
+  &__endereco{
+    margin-bottom: 25px;
+  }
+
+  &__title{
+    color: $fuel-yellow;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  &__social{
+    li{
+      display: inline-block;
+      margin-right: 15px;
+    }
+  }
+}
+
+#map{
+  width: 100%;
+  height: 100%;
+}
+
+
+
+.Detail{
+  background-color: $fuscous-gray;
+
+  h2{
+    color: $mercury;
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 1.4px;
+    margin: 0 0 30px;
+    position: relative;
+    line-height: 1.2;
+    text-transform: uppercase;
+
+    @include MQ(M){
+      font-size: 36px;
+    }
+
+    @include MQ(M){
+      font-size: 40px;
+    }
+
+    &::after{
+      content: "";
+      height: 1px;
+      width: 100%;
+      background-color: $fuel-yellow;
+      bottom: -10px;
+      position: absolute;
+      display: block;
+    }
+  }
+
+  ul{
+    font-size: 14px;
+    letter-spacing: 1px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @include MQ(S){
+      font-size: 16px;
+    }
+  }
+
+  li{
+    color: $mercury;
+    font-weight: bold;
+
+    span{
+      color: $dusty-gray;
+      font-weight: normal;
+    }
+  }
+
+  &__right{
+    padding: 30px;
+    
+    @include MQ(M){
+      padding: 30px 60px;
+    }
+  }
+
+  &__slider{
+    
+  }
+
+  @include MQ(M){
+    display: flex;
+    @include clearfix;
+
+    &__left,
+    &__right{
+      max-height: 750px;
+      //overflow: hidden;
+    }
+
+    &__left{
+      width: 55%;
+    }
+
+    &__right{
+      width: 45%;
+    }
+
+    .u-scrollbar{
+      height: 60%;
+    }
+  }
+}
+
+.Slider{
+  &__item{
+    background-position: center bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 300px;
+    border-bottom: 1px solid $fuel-yellow;
+
+    @include MQ(M){
+      height: 500px;
+    }
+
+    @include MQ(L){
+      height: 610px;
+    }
+  }
+
+  &__button{
+    @include center(y);
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    height: 30px;
+    position: absolute;
+    width: 40px;
+    z-index: 1;
+
+    &::after,
+    &::before{
+      background-color: $athens-gray;
+      content: "";
+      display: inline-block;
+      height: 3px;
+      position: absolute;
+      width: 30px;
+      border-radius: 3px;
+    }
+
+    &::after{
+      top: 22px;
+    }
+
+    &::before{
+      top: 2px;
+    }
+
+    &--prev{
+      left: 5px;
+
+      &::after,
+      &::before{
+        left: 0;
+      }
+
+      &::after{
+        @include transform(rotate(45deg));
+      }
+
+      &::before{
+        @include transform(rotate(-45deg));
+      }
+    }
+
+    &--next{
+      right: 5px;
+
+      &::after,
+      &::before{
+        right: 0;
+      }
+
+      &::after{
+        @include transform(rotate(-45deg));
+      }
+
+      &::before{
+        @include transform(rotate(45deg));
+      }
+    }
+
+    &:focus{
+      outline: 0;
+    }
+  }
+}
+
+.SliderNav{
+  &__item{
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+    height: auto !important;
+    position: relative;
+
+    &:focus{
+      outline: none;
+    }
+
+    &::before{
+      @include transition(opacity .3s ease);
+      
+      background: rgba(#3e3d3b, .5);
+      content: "";
+      display: block;
+      height: 100%;
+      position: absolute;
+      width: 100%;
+    }
+
+    &::after{
+      content: "";
+      display: block;
+      padding-bottom: 100%;
+    }
+
+    &.slick-current{
+      &::before{
+        opacity: 0;
+      }
+    }
+  }
+}
+
+.Proposta{
+  background-color: $tuatara;
+
+  h3{
+    color: $mercury;
+    font-size: 16px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+
+    @include MQ(S){
+      font-size: 18px;
+    }
+  }
+
+  @include MQ(M){
+    padding: 30px 12%;
+
+    .u-button{
+      color: #7d7d7c;
+      float: right;
+      max-width: 150px;
+      padding: 0;
+      text-align: center;
+    }
+  }
+}
+
+.Generic{
+  background-color: $tuatara;
+  border-bottom: 1px solid $fuel-yellow;
+  border-top: 1px solid $fuel-yellow;
+  padding: 30px 0;
+  text-align: center;  
+
+  h3{
+    color: $mercury;
+    font-size: 16px;
+    letter-spacing: 1.4px;
+    line-height: 1.2;
+    text-transform: uppercase;
+
+    @include MQ(S){
+      font-size: 18px;
+    }
+  }
+
+  @include MQ(M){
+    padding: 45px;
   }
 }

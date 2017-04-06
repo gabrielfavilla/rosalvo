@@ -3,7 +3,7 @@
 	<meta charset="UTF-8">
 	<title>Rosalvo</title>
 
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="viewport" content="wilih=device-wilih, initial-scale=1, maximum-scale=1">
 
 	<!-- CSS -->
 	<!-- 	
@@ -28,7 +28,7 @@
 <body>
  
 	<div class="PageWrapper">
-		<header class="Header">
+		<header class="Header--internal">
 			<div class="container">
 				<a href="#/" class="Header__logo">
 					<img src="assets/img/logo.png" alt="Rosalvo" class="Header__img">
@@ -60,25 +60,96 @@
 
 		<div class="PageContent">
 
-			<section class="Banner">
-				<div class="container">
-					<div class="Banner__content">
-						<h1>Lorem <span>Ipsum</span> é simplesmente uma simulação de texto</h1>
-					</div> <!-- Banner-content -->
-				</div> <!-- container -->
-			</section> <!-- Banner -->
+      <section class="Detail">
+        <div class="Detail__left">
+          <div class="Slider js-productSlider">
+            <div class="Slider__item" style="background-image: url(assets/img/carros/c1.jpg);"></div>
+            <div class="Slider__item" style="background-image: url(assets/img/carros/c2.jpg);"></div>
+            <div class="Slider__item" style="background-image: url(assets/img/carros/c3.jpg);"></div>
+            <div class="Slider__item" style="background-image: url(assets/img/carros/c4.jpg);"></div>
+          </div> <!-- Slider js-slider -->
 
-			<section class="Busca">
-				<div class="container">
-					<p>busque por tipo, marca, modelo ou outros tipos de veículos</p>
+          <div class="SliderNav__nav js-productNav">
+            <div class="SliderNav__item" style="background-image:url(assets/img/carros/c5.jpg)"></div>
+            <div class="SliderNav__item" style="background-image:url(assets/img/carros/c6.jpg)"></div>
+            <div class="SliderNav__item" style="background-image:url(assets/img/carros/c5.jpg)"></div>
+            <div class="SliderNav__item" style="background-image:url(assets/img/carros/c6.jpg)"></div>
+            <div class="SliderNav__item" style="background-image:url(assets/img/carros/c5.jpg)"></div>
+            <div class="SliderNav__item" style="background-image:url(assets/img/carros/c6.jpg)"></div>
+            <div class="SliderNav__item" style="background-image:url(assets/img/carros/c5.jpg)"></div>
+          </div>
+        </div> <!-- Detail__left -->
+        <div class="Detail__right">
+          <h2>BMW M3 E-46</h2>
 
-					<form class="Form">
-						<div class="Form__control--search">
-							<input type="text" name="input_busca" value="">
-						</div>
-					</form>
-				</div>
-			</section> <!-- Busca -->
+          <div class="u-scrollbar">
+            <ul>
+              <li>Cor: <span>Cinza</span></li>
+              <li>Ano: <span>2013/2013</span></li>
+              <li>Km: <span>17.650</span></li>            
+              <li>COMBUSTÍVEL: <span>GASOLINA</span></li>
+              <li>CÂMBIO: <span>AUTOMÁTICO</span></li>            
+              <li>PREÇO (R$): <span>149.000,00</span></li>
+              <li>Placa: <span>XXX-XXXX</span></li>            
+              <li>Portas: <span>2</span></li>            
+              <li>Motor: <span>4.0L Turbo Potência: 540 cv</span></li>            
+              <li>Multimídia: <span>Sistema de som Mini Naviga- tion System com alto falantes Harman/Kardon, GPS, computador de bordo, entradas USB e auxiliar, conexão via Bluetooth.</span></li>
+              <li>Bancos: Em couro creme.</li>
+              <li>Freios: <span>ABS</span></li>
+              <li>Faróis: <span>Bi xenon</span></li>
+              <li>Rodas: <span>Aro 20" com pneus Run at</span></li>            
+              <li>Sensor de estacionamento: <span>Traseiro</span></li>            
+              <li>Conversível: <span>sim</span></li>            
+              <li>Bluetooth: <span>sim</span></li>            
+              <li>Observações: <span>Cambio Steptronic de 6 marchas, botão Sport que con gura direção, cambio e pedal do acelerador, volante multifuncional com Shift</span></li>
+            </ul>
+          </div>
+
+        </div>
+      </section> <!-- Detail -->
+
+      <div class="Proposta">
+        <div class="container">
+          <h3>INTERESSADO? FAÇA UMA PROPOSTA!</h3>
+
+          <div class="Form">
+            <div class="Form__control--half" data-validate="true">
+              <input type="text" placeholder="NOME">
+              <span class="Form__required">*</span>
+            </div> <!-- Form__control -->
+            
+            <div class="Form__control--half">
+              <input type="tel" placeholder="TELEFONE">
+              <span class="Form__required">*</span>
+            </div> <!-- Form__control -->
+
+            <div class="Form__control--half" data-validate="true">
+              <input type="text" placeholder="EMAIL">
+              <span class="Form__required">*</span>
+            </div> <!-- Form__control -->
+
+            <div class="Form__control--half" data-validate="true">
+              <input type="text" placeholder="CIDADE">
+              <span class="Form__required">*</span>
+            </div> <!-- Form__control -->
+
+            <div class="Form__control" data-validate="true">
+              <textarea rows="3" cols="30" placeholder="OBS (EX: TENHO INTERESSE NO CARRO BMW...)"></textarea>
+              <span class="Form__required">*</span>
+            </div>
+
+            <div class="Form__control">
+              <a href="#/" class="u-button js-submitForm"><span>enviar</span></a>
+            </div>
+          </div> <!-- Form -->
+        </div> <!-- container -->
+      </div> <!-- Proposta -->
+
+      <div class="Generic">
+        <div class="container">
+          <h3>ou continue buscando pelo seu veículo!</h3>
+        </div>
+      </div> <!-- Generic -->
 
 			<section class="Grid">
 				<div class="Grid__item" style="background-image: url(assets/img/carros/c3.jpg);">
@@ -87,7 +158,7 @@
 					</div> <!-- Grid__title -->
 
 					<div class="Grid__buttons">
-						<a href="carro.html">VER DETALHES</a>
+						<a href="#/">VER DETALHES</a>
 						<a href="#/">FAZER PROPOSTA</a>
 					</div> <!-- Grid__buttons -->
 				</div> <!-- Grid__item -->
@@ -98,7 +169,7 @@
 						</div> <!-- Grid__title -->
 
 						<div class="Grid__buttons">
-							<a href="carro.html">VER DETALHES</a>
+							<a href="#/">VER DETALHES</a>
 							<a href="#/">FAZER PROPOSTA</a>
 						</div> <!-- Grid__buttons -->
 					</div> <!-- Grid__item -->
@@ -109,7 +180,7 @@
 						</div> <!-- Grid__title -->
 
 						<div class="Grid__buttons">
-							<a href="carro.html">VER DETALHES</a>
+							<a href="#/">VER DETALHES</a>
 							<a href="#/">FAZER PROPOSTA</a>
 						</div> <!-- Grid__buttons -->
 					</div> <!-- Grid__item -->
@@ -120,95 +191,7 @@
 						</div> <!-- Grid__title -->
 
 						<div class="Grid__buttons">
-							<a href="carro.html">VER DETALHES</a>
-							<a href="#/">FAZER PROPOSTA</a>
-						</div> <!-- Grid__buttons -->
-					</div> <!-- Grid__item -->
-
-					<div class="Grid__item" style="background-image: url(assets/img/carros/c3.jpg);">
-						<div class="Grid__title">
-							<h4>GOLF GTI 2.0 <small>2015-2016</small></h4>
-						</div> <!-- Grid__title -->
-
-						<div class="Grid__buttons">
-							<a href="carro.html">VER DETALHES</a>
-							<a href="#/">FAZER PROPOSTA</a>
-						</div> <!-- Grid__buttons -->
-					</div> <!-- Grid__item -->
-
-					<div class="Grid__item" style="background-image: url(assets/img/carros/c3.jpg);">
-						<div class="Grid__title">
-							<h4>GOLF GTI 2.0 <small>2015-2016</small></h4>
-						</div> <!-- Grid__title -->
-
-						<div class="Grid__buttons">
-							<a href="carro.html">VER DETALHES</a>
-							<a href="#/">FAZER PROPOSTA</a>
-						</div> <!-- Grid__buttons -->
-					</div> <!-- Grid__item -->
-
-					<div class="Grid__item--xs" style="background-image: url(assets/img/carros/c3.jpg);">
-						<div class="Grid__title">
-							<h4>GOLF GTI 2.0 <small>2015-2016</small></h4>
-						</div> <!-- Grid__title -->
-
-						<div class="Grid__buttons">
-							<a href="carro.html">VER DETALHES</a>
-							<a href="#/">FAZER PROPOSTA</a>
-						</div> <!-- Grid__buttons -->
-					</div> <!-- Grid__item -->
-
-					<div class="Grid__item--xs" style="background-image: url(assets/img/carros/c3.jpg);">
-						<div class="Grid__title">
-							<h4>GOLF GTI 2.0 <small>2015-2016</small></h4>
-						</div> <!-- Grid__title -->
-
-						<div class="Grid__buttons">
-							<a href="carro.html">VER DETALHES</a>
-							<a href="#/">FAZER PROPOSTA</a>
-						</div> <!-- Grid__buttons -->
-					</div> <!-- Grid__item -->
-
-					<div class="Grid__item--xs" style="background-image: url(assets/img/carros/c3.jpg);">
-						<div class="Grid__title">
-							<h4>GOLF GTI 2.0 <small>2015-2016</small></h4>
-						</div> <!-- Grid__title -->
-
-						<div class="Grid__buttons">
-							<a href="carro.html">VER DETALHES</a>
-							<a href="#/">FAZER PROPOSTA</a>
-						</div> <!-- Grid__buttons -->
-					</div> <!-- Grid__item -->
-
-					<div class="Grid__item--xs" style="background-image: url(assets/img/carros/c3.jpg);">
-						<div class="Grid__title">
-							<h4>GOLF GTI 2.0 <small>2015-2016</small></h4>
-						</div> <!-- Grid__title -->
-
-						<div class="Grid__buttons">
-							<a href="carro.html">VER DETALHES</a>
-							<a href="#/">FAZER PROPOSTA</a>
-						</div> <!-- Grid__buttons -->
-					</div> <!-- Grid__item -->
-
-					<div class="Grid__item--xs" style="background-image: url(assets/img/carros/c3.jpg);">
-						<div class="Grid__title">
-							<h4>GOLF GTI 2.0 <small>2015-2016</small></h4>
-						</div> <!-- Grid__title -->
-
-						<div class="Grid__buttons">
-							<a href="carro.html">VER DETALHES</a>
-							<a href="#/">FAZER PROPOSTA</a>
-						</div> <!-- Grid__buttons -->
-					</div> <!-- Grid__item -->
-
-					<div class="Grid__item--xs" style="background-image: url(assets/img/carros/c3.jpg);">
-						<div class="Grid__title">
-							<h4>GOLF GTI 2.0 <small>2015-2016</small></h4>
-						</div> <!-- Grid__title -->
-
-						<div class="Grid__buttons">
-							<a href="carro.html">VER DETALHES</a>
+							<a href="#/">VER DETALHES</a>
 							<a href="#/">FAZER PROPOSTA</a>
 						</div> <!-- Grid__buttons -->
 					</div> <!-- Grid__item -->

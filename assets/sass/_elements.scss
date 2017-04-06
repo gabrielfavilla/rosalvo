@@ -1,0 +1,270 @@
+/* FORM */
+
+.Form{
+	@include clearfix;
+
+	margin-bottom: 0;
+	width: 100%;
+
+	&__control{
+		margin-bottom: 20px;
+		position: relative;
+
+		&.error{
+			input[type="text"],
+			input[type="email"],
+			input[type="tel"],
+			textarea {
+				border-color: #cf3a3a;
+
+				&:focus{
+					border-color: darken(#cf3a3a, 10%);
+				}
+			}
+
+			span{
+				opacity: 1;
+				visibility: visible;
+			}
+		}
+
+    &--search{
+      @extend .Form__control;
+      position: relative;
+
+      input[type="text"],
+	    input[type="email"]{
+        padding-right: 30px !important;
+      }
+
+      &::after{
+        background-size: contain;
+        background: url(../img/icons/search.png) no-repeat 0 0;
+        content: "";
+        display: inline-block;
+        height: 22px;
+        position: absolute;
+        right: 8px;
+        top: 6px;
+        width: 18px;
+      }
+    }
+
+		@include MQ(S){
+			display: inline-block;
+			float: left;
+			width: calc(50% - 10px);
+
+			&:nth-child(odd){
+				margin-right: 20px;
+			}
+		}
+
+		@include MQ(M){
+			display: block;
+			-float: none;
+			width: 100%;
+		}
+
+		&--half{
+			@extend .Form__control;
+			
+			@include MQ(M){
+				display: inline-block;
+				float: left;
+				width: calc(50% - 10px);
+			}
+		}
+	}
+
+	input,
+	textarea{
+		width: 100%;
+	}
+
+	input[type="text"],
+	input[type="email"],
+	input[type="tel"],
+	textarea {
+		@include transition(color, .6s, ease, box-shadow, .4s, linear);
+
+    background-color: transparent;
+    border-bottom: 2px solid $silver;
+    border-left: 2px solid $fuel-yellow;
+    border-right: 2px solid $silver;
+    border-top: 2px solid $silver;
+    font-size: 12px;
+    color: $silver;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 10px;
+
+		&:focus{
+			border-color: $fuel-yellow;
+			box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, .15);
+			outline: none;
+		}
+
+		@include MQ(S){
+			font-size: 14px;
+		}
+	}
+
+	textarea{
+		resize: none;
+		margin-bottom: 15px;
+		height: auto;
+	}
+
+
+	&__required{
+		color: #cf3a3a;
+		font-size: 16px;
+		font-weight: 600;
+		opacity: 0;
+		position: absolute;
+		right: 8px;
+		top: 0;
+		visibility: hidden;
+	}
+}
+
+.u-button{
+	background-color: white;
+	border: 0;
+	color: $tuatara;
+	display: block;
+	font-family: $titillium;
+	font-size: 16px;
+	font-weight: bold;
+	height: 48px;
+	line-height: 48px;
+	letter-spacing: 1.5px;
+	max-width: 370px;
+	padding-left: 10%;
+	position: relative;
+	text-decoration: none;
+	text-transform: uppercase;
+	width: 100%;
+
+	span{
+		position: relative;
+		z-index: 1;
+	}
+
+	@include MQ(M){
+		padding-left: 6%;
+	}
+
+	&::before{
+		@include transition(all .5s ease);
+
+		background-color: $fuel-yellow;
+		content: "";
+		display: inline-block;
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 5px;
+	}
+
+	&:hover{
+		//color: white;
+
+		&::before{
+			width: 100%;
+		}
+	}
+}
+
+
+.u-scrollbar{
+	position: relative;	
+	padding-right: 15px;
+}
+
+
+
+
+
+
+/* Base for label styling */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+	color: $silver;
+	display: inline-block;
+	font-size: 14px;
+	font-weight: bold;
+	text-transform: uppercase;
+	vertical-align: middle;
+  cursor: pointer;
+  padding-left: 50px;
+  position: relative;
+}
+
+/* checkbox aspect */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+	height: 40px;
+	top: 0;
+  background: transparent;
+  border: 2px solid $silver;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
+  content: '';
+  left: 0; 
+  position: absolute;
+  width: 40px; 
+}
+/* checked mark aspect */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+  content: '✔';
+  position: absolute;
+  top: 0; 
+	left: 8px;
+  font-size: 30px;
+  line-height: 40px;
+  color: $fuel-yellow;
+  transition: all .2s;
+}
+[type="checkbox"]:checked + label:before{
+	border-color: $fuel-yellow;
+}
+/* checked mark aspect changes */
+[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+[type="checkbox"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}
+/* disabled checkbox */
+[type="checkbox"]:disabled:not(:checked) + label:before,
+[type="checkbox"]:disabled:checked + label:before {
+  box-shadow: none;
+  border-color: #bbb;
+  background-color: #ddd;
+}
+[type="checkbox"]:disabled:checked + label:after {
+  color: #999;
+}
+[type="checkbox"]:disabled + label {
+  color: #aaa;
+}
+/* accessibility */
+[type="checkbox"]:checked:focus + label:before,
+[type="checkbox"]:not(:checked):focus + label:before {
+  //border: 2px solid $fuel-yellow;
+}
+
+/* hover style just for information */
+label:hover:before {
+  //border: 2px solid $fuel-yellow!important;
+}

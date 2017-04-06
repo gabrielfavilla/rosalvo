@@ -1,0 +1,52 @@
+$code: 'Code';
+$titillium: 'Titillium';
+
+@font-face {
+	font-family: 'Titillium';
+	src: url('../fonts/Titillium-Bold.eot');
+	src: url('../fonts/Titillium-Bold.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Titillium-Bold.woff') format('woff'),
+		url('../fonts/Titillium-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Titillium';
+	src: url('../fonts/Titillium-Regular.eot');
+	src: url('../fonts/Titillium-Regular.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Titillium-Regular.woff') format('woff'),
+		url('../fonts/Titillium-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Titillium';
+	src: url('../fonts/Titillium-Semibold.eot');
+	src: url('../fonts/Titillium-Semibold.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Titillium-Semibold.woff') format('woff'),
+		url('../fonts/Titillium-Semibold.ttf') format('truetype');
+	font-weight: 600;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Code';
+	src: url('../fonts/Code-Light.eot');
+	src: url('../fonts/Code-Light.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Code-Light.woff') format('woff'),
+		url('../fonts/Code-Light.ttf') format('truetype');
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Code';
+	src: url('../fonts/Code-Bold.eot');
+	src: url('../fonts/Code-Bold.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/Code-Bold.woff') format('woff'),
+		url('../fonts/Code-Bold.ttf') format('truetype');
+	font-weight: bold;
+	font-style: normal;
+}

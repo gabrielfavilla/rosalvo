@@ -3,37 +3,61 @@
 
   background: url(../img/header-small.jpg) no-repeat center bottom;
   background-size: cover;
+  box-shadow: 0 0 10px 6px rgba(black, .5);
   height: 100px;
-  position: fixed;
-  top: 0;
   left: 0;
+  margin: 0 auto;
+  position: fixed;
   right: 0;
+  top: 0;
   width: 100%;
   z-index: 2;
-  margin: 0 auto;
 
   @include MQ(M){
     background-size: contain;
     background: url(../img/header.png) no-repeat center bottom;
+    box-shadow: 0;
     height: 237px;
     max-width: 1280px;
+
+    &::after,
+    &::before{
+      content: "";
+      background-color: $silver-chalice;
+      display: inline-block;
+      position: absolute;
+      width: 20px;
+      height: 100px;
+      top: -2px;
+    }
+
+    &::after{
+      right: -20px;
+    }
+
+    &::before{
+      left: -20px;
+    }
   }
 
-  &.is-scrolling{
+  &--internal{
+    @extend .Header;
+  }
+
+  &.is-scrolling,
+  &--internal{
     @include MQ(maxM){
-
-
+      height: 80px;
+      
       .MenuTrigger{
         top: 26px;
         width: 28px;
 
         span{
-          background-color: $azure;
           height: 3px;
 
           &::before,
           &::after{
-            background-color: $azure;
             height: 3px;
           }
 
@@ -47,24 +71,60 @@
         }
       }
 
-      .Header-logo{
+      .Header__logo{
         top: 10px;
-        width: 46px;
+        width: 64px;
+      }
+    }
+
+    @include MQ(M){
+      border-top: 2px solid $fuel-yellow;
+      background-position: 0 top;
+      box-shadow: 0 0 10px 6px rgba(black, .45);
+      height: 80px;
+
+      .Menu{
+        top: 10px;
+      }
+
+      .Header__logo{
+        top: 22px;
+      }
+
+      .Header__img{
+        display: none;
+
+        &--small{
+          display: block;
+          width: 160px;
+        }
       }
     }
   }
 
-  &-logo{
+  &__logo{
+    @include transition(all .4s ease);
+
     left: 30px;
+    display: inline-block;
     position: absolute;
     top: 15px;
     width: 80px;
 
+    img{
+      @include transition(width .4s ease);
+    }
+
     @include MQ(M){      
+      @include transition(all .4s ease);
       @include center(x);
       top: 32px;
       width: auto;
     }
+  }
+
+  &__img--small{
+    display: none;
   }
 }
 
@@ -72,7 +132,7 @@
   @include transform(translateX(-100%));
   @include transition(all, .6s, ease);
   
-  background-color: $athens-gray;
+  background-color: $tuatara;
   box-shadow: 1px -3px 2px 1px rgba(0, 0, 0, .3);
   height: 100%;
   opacity: 0;
@@ -85,14 +145,38 @@
 
   @include MQ(M){
     @include transform(none);
+
     background-color: transparent;
     box-shadow: none;
-    display: inline-block;
+    display: block;
+    height: inherit;
+    margin: 0 auto;
+    max-width: 1060px;
     opacity: 1;
     position: relative;
-    //vertical-align: middle;
+    top: 25px;
     visibility: visible;
-    width: calc(100% - 160px);
+    width: 100%;
+
+    ul{
+      width: 100%;
+    }
+
+    li{
+      position: absolute;
+
+      &:nth-child(2){
+        left: 16%;
+      }
+
+      &:nth-child(3){
+        right: 16%;
+      }
+
+      &:nth-child(4){
+        right: 0;
+      }
+    }
   }
 
   // MODIFICADORES
@@ -181,7 +265,7 @@
 
   > ul{
     li{
-      border-bottom: 1px solid darken($cerulean, 10%);
+      border-bottom: 1px solid $sea-buckthorn;
 
       @include MQ(M){
         border: 0;
@@ -200,17 +284,22 @@
     }
 
     a{
-      color: $azure;
+      @include transition(color .3s ease);
+
+      color: white;
       font-size: 14px;
       text-decoration: none;
       display: block;
       padding: 10px 0 10px 15px;
+      font-weight: 600;
 
-      @include MQ(M){
-        color: white;
-        font-size: 16px;
-        padding: 0;
-        font-weight: 500;
+      @include MQ(S){
+        font-size: 18px;
+        padding: 15px 0 15px 15px;
+      }
+
+      &:hover{
+        color: $fuel-yellow;
       }
     }
 
@@ -414,7 +503,6 @@
 	z-index: 2;
 
   @include MQ(S){
-    top: 72px;
 	  width: 42px;
   }
 
